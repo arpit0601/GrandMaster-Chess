@@ -2,7 +2,7 @@ import chess
 import chess.svg
 from PyQt5.QtGui import QFont
 from PyQt5.QtSvg import QSvgWidget
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel
+from PyQt5.QtWidgets import QWidget, QLabel
 from PyQt5.QtCore import pyqtSlot, Qt
 
 
@@ -29,11 +29,11 @@ class MainWindow(QWidget):
         self.label1.resize(775, 50)
         self.label1.setStyleSheet("border: 5px solid black;")
         self.label1.setFont(QFont('Arial', 25))
-        # self.label1.setText("ggrdtgdgtr")
 
     @pyqtSlot(QWidget)
     def mousePressEvent(self, event):
         if self.board.is_checkmate():
+            a = chess.Color
             self.label1.setText("CheckMate!, Game over")
         else:
             if event.x() <= self.boardSize and event.y() <= self.boardSize:
@@ -57,10 +57,3 @@ class MainWindow(QWidget):
                         self.pieceToMove = [piece, coordinates]
                         self.boardSvg = chess.svg.board(self.board).encode("UTF-8")
                         self.widgetSvg.load(self.boardSvg)
-
-
-if __name__ == "__main__":
-    app = QApplication([])
-    window = MainWindow()
-    window.show()
-    app.exec()
