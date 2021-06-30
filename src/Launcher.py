@@ -7,6 +7,7 @@ from Multiplayer_chess import *
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__()
+        self.Multiplayer_window = MainWindow()
         uic.loadUi('UILauncher.ui', self)
         self.show()
         self.ImageLabel.setPixmap(QPixmap('Launcher.jpg'))
@@ -14,7 +15,6 @@ class Ui(QtWidgets.QMainWindow):
         self.dialog = MainWindow()
 
     def multiplayerPressed(self):
-        self.Multiplayer_window = MainWindow()
         self.Multiplayer_window.show()
 
 
